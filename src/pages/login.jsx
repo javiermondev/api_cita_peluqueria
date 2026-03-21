@@ -16,67 +16,28 @@ export default function Login() {
     setError("");
     setLoading(true);
 
-// if (condition) {
-//   const { error } = await supabase.auth.signInWithPassword({
-//       email="admin@gmail.com",
-//       password="administrador",
-//     });
-// } 
-    
-//     else{
-//        const { error } = await supabase.auth.signInWithPassword({
-//       email,
-//       password,
-//     });
-    // }
-
-// if (email === "admin@gmail.com" && password === "administrador") {
-//   const { error } = await supabase.auth.signInWithPassword({
-//     email: "admin@gmail.com",
-//     password: "administrador",
-//   });
-
-//   if (!error) navigate("/recordbook");
-// } else {
-//   const { error } = await supabase.auth.signInWithPassword({
-//     email,
-//     password,
-//   });
-
-//   if (!error) navigate("/dashboard");
-// }
 
 const { data, error } = await supabase.auth.signInWithPassword({
   email,
   password,
 });
 
-// if (error) {
-//   console.log(error.message);
-//   return;
-// }
-
-//  if (error) {
-//     console.error("Error iniciando sesión:", error.message);
-//     alert("Email o contraseña incorrectos");
-//     return;
-//   }
 
  if (error) {
     console.error("Error iniciando sesión:", error.message);
     setError("❌ Email o contraseña incorrectos2");
     setLoading(false);
-    return; // ⚠️ detener ejecución aquí
+    return; // detener ejecución aquí
   }
 
   // Login correcto
   setLoading(false);
 
-// 🔑 ADMIN
+// ADMIN
 if (email === "admin@gmail.com") {
   navigate("/recordbook");
 } 
-// 👤 USUARIO NORMAL
+// USUARIO NORMAL
 else {
   navigate("/dashboard");
 }
@@ -154,55 +115,3 @@ else {
     </div>
   );
 }
-
-
-
-// import { useState } from 'react'
-// import { supabase } from '../lib/supabase'
-
-// export default function Login() {
-//   const [email, setEmail] = useState('')
-//   const [password, setPassword] = useState('')
-//   const [message, setMessage] = useState('')
-
-//   const handleLogin = async (e) => {
-//     e.preventDefault()
-
-//     const { data, error } = await supabase.auth.signInWithPassword({
-//       email,
-//       password
-//     })
-
-//     if (error) {
-//       setMessage(error.message)
-//     } else {
-//       setMessage("Sesión iniciada correctamente.")
-//     }
-//   }
-
-//   return (
-//     <div>
-//       <h1>Iniciar sesión</h1>
-
-//       <form onSubmit={handleLogin}>
-//         <input 
-//           type="email" 
-//           placeholder="Email"
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//         />
-
-//         <input 
-//           type="password" 
-//           placeholder="Contraseña"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//         />
-
-//         <button type="submit">Entrar</button>
-//       </form>
-
-//       <p>{message}</p>
-//     </div>
-//   )
-// }

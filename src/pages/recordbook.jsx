@@ -8,7 +8,7 @@ export default function AdminPanel() {
   const [citas, setCitas] = useState([]);
   const [mensaje, setMensaje] = useState("");
 
-  // 1️⃣ Cargar usuarios registrados
+  // Cargar usuarios registrados
   const cargarUsuarios = async () => {
     const { data, error } = await supabase
       .from("profiles") // o la tabla de usuarios
@@ -20,7 +20,7 @@ export default function AdminPanel() {
     }
   };
 
-  // 2️⃣ Cargar citas
+  // Cargar citas
   const cargarCitas = async () => {
     const { data, error } = await supabase
       .from("citas")
@@ -44,7 +44,7 @@ export default function AdminPanel() {
     }
   };
 
-  // 3️⃣ Marcar hora/día como ocupada o cancelar cita
+  //  Marcar hora/día como ocupada o cancelar cita
   const modificarCita = async (citaId, motivo) => {
     const { error } = await supabase
       .from("citas")

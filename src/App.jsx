@@ -18,32 +18,3 @@ export default function App() {
     </BrowserRouter>
   );
 }
-
-// import { useEffect, useState } from 'react'
-// import { supabase } from './lib/supabase.js'
-
-// console.log(">>> CARGANDO APP")
-
-
-// function App() {
-//   const [user, setUser] = useState(null)
-
-//   useEffect(() => {
-//     supabase.auth.getUser().then(({ data }) => {
-//       setUser(data.user)
-//     })
-//   }, [])
-
-//   return (
-//     <div>
-//       {user ? (
-//         <p>Usuario logueado: {user.email}</p>
-//       ) : (
-//         <p>No hay usuario logueado</p>
-//       )}
-//     </div>
-//   )
-// }
-
-// export default App
-

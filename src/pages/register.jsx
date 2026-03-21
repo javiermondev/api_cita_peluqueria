@@ -23,44 +23,7 @@ export default function Register() {
       [e.target.name]: e.target.value,
     });
   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     if (form.password !== form.confirmPassword) {
-//       alert("Las contraseñas no coinciden");
-//       return;
-//     }
-
-//     // Registro en Supabase Auth
-//     const { data, error } = await supabase.auth.signUp({
-//       email: form.email,
-//       password: form.password,
-//        options: {
-//     data: {
-//       name: form.name, // <-- el nombre que el usuario escribe en el formulario
-//     },
-//   },
-//     });
-
-//     // if (error) {
-//     //   setMessage(error.message);
-//     //   return;
-//     // }
-
-//     if (error) {
-//   if (error.message.includes("Password should be at least 6 characters")) {
-//     setMessage("La contraseña debe tener al menos 6 caracteres")
-//   } else {
-//     setMessage(error.message)
-//   }
-//   return
-// }
-
-//     setMessage("Usuario registrado. Revisa tu email para confirmar la cuenta.");
-
-//     navigate("/dashboard");
-//   };
+  
 
 const handleSubmit = async (e) => {
   e.preventDefault();

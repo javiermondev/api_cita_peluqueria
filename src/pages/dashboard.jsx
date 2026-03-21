@@ -1,386 +1,3 @@
-// import { useEffect, useState } from "react";
-// import FullCalendar from "@fullcalendar/react";
-// import dayGridPlugin from "@fullcalendar/daygrid";
-// import interactionPlugin from "@fullcalendar/interaction";
-// import esLocale from "@fullcalendar/core/locales/es";
-// import { useNavigate } from "react-router-dom";
-
-// import { supabase } from "../lib/supabase";
-// import "../styles/fondoGlobal.css";
-
-// const HORAS = ["09:00", "10:00", "11:00", "12:00", "16:00", "17:00", "18:00"];
-
-// export default function Dashboard() {
-//   const navigate = useNavigate();
-
-//   // Estados
-//   const [user, setUser] = useState(undefined); // undefined = cargando
-//   const [profile, setProfile] = useState(null);
-//   const [fechaSeleccionada, setFechaSeleccionada] = useState(null);
-//   const [horasOcupadas, setHorasOcupadas] = useState([]);
-//   const [mostrarModal, setMostrarModal] = useState(false);
-//   const [mensaje, setMensaje] = useState("");
-//   const [citaUsuario, setCitaUsuario] = useState(null); // ✅ estado de la cita del usuario
-
-
-// //   // 1️⃣ Obtener usuario actual
-// //   useEffect(() => {
-// //     const fetchUser = async () => {
-// //       const { data: { user }, error } = await supabase.auth.getUser();
-// //       if (error) {
-// //         console.error("Error obteniendo usuario:", error.message);
-// //         setUser(null);
-// //         return;
-// //       }
-// //       setUser(user ?? null);
-// //     };
-
-// //     fetchUser();
-// //   }, []);
-
-// //   // 2️⃣ Redirigir al login si no hay usuario
-// //   useEffect(() => {
-// //     if (user === null) {
-// //       navigate("/");
-// //     }
-// //   }, [user, navigate]);
-
-// //   // 3️⃣ Cargar perfil
-// //  useEffect(() => {
-// //   if (!user) return;
-
-// //   const cargarPerfil = async () => {
-// //     const { data, error } = await supabase
-// //       .from("profiles")
-// //       .select("nombre, rol")
-// //       .eq("id", user.id)
-// //       .single();
-
-// //     if (error) {
-// //       // Crea el perfil usando el name del registro
-// //       const nombreDelUsuario = user.user_metadata?.name || "Usuario";
-// //       const { data: nuevoPerfil, error: errorInsert } = await supabase
-// //         .from("profiles")
-// //         .insert({ id: user.id, nombre: nombreDelUsuario, rol: "cliente" })
-// //         .select()
-// //         .single();
-
-// //       if (errorInsert) {
-// //         console.error("Error creando perfil:", errorInsert.message);
-// //       } else {
-// //         setProfile(nuevoPerfil);
-// //       }
-// //     } else {
-// //       setProfile(data);
-// //     }
-// //   };
-
-// //   cargarPerfil();
-// // }, [user]);
-
-// // //si el rol es admin mandar a recordbook. aqui ya sabemos el rol
-// // useEffect(() => {
-// //   if (!profile) return;
-
-// //   if (profile.rol === "admin") {
-// //     navigate("/recordbook");
-// //   }
-// // }, [profile, navigate]);
-
-
-// //   // 4️⃣ Logout
-// //   const cerrarSesion = async () => {
-// //     const { error } = await supabase.auth.signOut();
-// //     if (error) {
-// //       console.error("Error al cerrar sesión:", error.message);
-// //     } else {
-// //       setUser(null);
-// //       navigate("/");
-// //     }
-// //   };
-
-
-// // 1️⃣ Obtener usuario actual y redirigir admin por email
-//   useEffect(() => {
-//     const fetchUser = async () => {
-//       const { data: { user }, error } = await supabase.auth.getUser();
-//       if (error || !user) {
-//         console.error("Error obteniendo usuario:", error?.message);
-//         setUser(null);
-//         navigate("/"); // redirigir al login
-//         return;
-//       }
-
-//       // ⚡ Redirigir solo si es admin
-//       if (user.email === "admin@gmail.com") {
-//         navigate("/recordbook");
-//         return;
-//       }
-
-//       setUser(user);
-//     };
-
-//     fetchUser();
-//   }, [navigate]);
-
-//   // 2️⃣ Cargar perfil solo para mostrar nombre
-//   useEffect(() => {
-//     if (!user) return;
-
-//     const cargarPerfil = async () => {
-//       const { data, error } = await supabase
-//         .from("profiles")
-//         .select("nombre")
-//         .eq("id", user.id)
-//         .single();
-
-//       if (error || !data) {
-//         const nombreDelUsuario = user.user_metadata?.name || "Usuario";
-//         setProfile({ nombre: nombreDelUsuario });
-//       } else {
-//         setProfile(data);
-//       }
-//     };
-
-//     cargarPerfil();
-//   }, [user]);
-
-//   // 3️⃣ Logout
-//   const cerrarSesion = async () => {
-//     const { error } = await supabase.auth.signOut();
-//     if (!error) {
-//       setUser(null);
-//       navigate("/");
-//     }
-//   };
-
-//   // // 4️⃣ Cargar horas ocupadas
-//   // const cargarHoras = async (fecha) => {
-//   //   const { data, error } = await supabase
-//   //     .from("citas")
-//   //     .select("hora")
-//   //     .eq("fecha", fecha);
-
-//   //   if (error) {
-//   //     console.error("Error cargando horas:", error.message);
-//   //     setHorasOcupadas([]);
-//   //   } else {
-//   //     setHorasOcupadas(data.map((r) => r.hora.toString().trim().slice(0, 5)));
-//   //   }
-//   // };
-
-
-
-
-//   const nombre = profile?.nombre || "Usuario";
-
-//   // 5️⃣ Mostrar cargando mientras obtenemos usuario y perfil
-//   if (user === undefined || profile === null) {
-//     return <p>Cargando...</p>;
-//   }
-
-//   // 6️⃣ Cargar horas ocupadas
-// const cargarHoras = async (fecha) => {
-//   const { data, error } = await supabase
-//     .from("citas")
-//     .select("hora")
-//     .eq("fecha", fecha);
-
-//   if (error) {
-//     console.error("Error cargando horas:", error.message);
-//     setHorasOcupadas([]);
-//   } else {
-//     // trim + slice a HH:MM para normalizar
-//     setHorasOcupadas(
-//       data.map((r) => r.hora.toString().trim().slice(0,5))
-//     );
-//   }
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//   // 7️⃣ Reservar hora
-//   const reservarHora = async (hora) => {
-//     // if (horasOcupadas.includes(hora)) return; // evita duplicados
-
-//     // if (!user) {
-//     //   setMensaje("Debes iniciar sesión");
-//     //   return;
-//     // }
-//     if (horasOcupadas.includes(hora)) {
-//   setMensaje("⛔ Esa hora ya está ocupada");
-//   return;
-// }
-
-//     const { error } = await supabase.from("citas").insert({
-//       fecha: fechaSeleccionada,
-//       hora,
-//       cliente_id: user.id,
-//       estado: "pendiente",
-//     });
-
-//     if (error) {
-//       console.error(error);
-//       setMensaje("❌ No se pudo reservar la cita");
-//     } else {
-//       setMensaje("✅ Cita reservada correctamente");
-//       cargarHoras(fechaSeleccionada);
-//     }
-
-
-
-
-//     //crear estado para la cita
-
-
-// //crear funcion para cargar la cita
-// const cargarCitaUsuario = async () => {
-//   if (!user) return;
-
-//   const { data, error } = await supabase
-//     .from("citas")
-//     .select("fecha, hora")
-//     .eq("cliente_id", user.id)
-//     .eq("estado", "pendiente") // opcional: solo citas activas
-//     .limit(1); // si quieres solo 1 cita por usuario
-
-  
-
-// //   if (error) {
-// //     console.error("Error cargando cita del usuario:", error);
-// //     setCitaUsuario(null);
-// //   } else {
-// //     setCitaUsuario(data || null);
-// //   }
-// // };
-
-
-// if (error) {
-//   console.error("Error cargando cita del usuario:", error);
-//   setCitaUsuario(null);
-// } else {
-//   console.log("CITA DATA:", data); // 👈 DEBUG
-//   setCitaUsuario(data.length > 0 ? data[0] : null);
-// }
-// };
-
-
-// //llamamos a la funcion
-// useEffect(() => {
-//   console.log("USER:", user);
-
-//   if (user) {
-//     console.log("USER ID:", user.id); // ✅ correcto
-//     console.log("hola");
-
-//     cargarCitaUsuario();
-//   }
-// }, [user]);
-
-//   };
-
-
-
-//   return (
-//     <div className="bg-light" style={{ padding: "20px" }}>
-//       <h1 className="text-center">Reservar Cita</h1>
-
-//       {/* Header */}
-//       <div className="d-flex justify-content-end align-items-center mb-3">
-//         <p className="mb-0">Hola {nombre}</p>
-//         <button className="btn btn-success ms-3" onClick={cerrarSesion}>
-//           Cerrar sesión
-//         </button>
-//       </div>
-
-
-//   {/* mostramos si tiene cita o no */}
-//   <div className="d-flex justify-content-end align-items-center mb-3">
-//   <p className="mb-0">
-//     Hola {nombre} -{" "}
-//     {citaUsuario
-//       ? `Tienes cita el ${citaUsuario.fecha} a las ${citaUsuario.hora}`
-//       : "No tienes cita seleccionada"}
-//   </p>
-//   <button className="btn btn-success ms-3" onClick={cerrarSesion}>
-//     Cerrar sesión
-//   </button>
-// </div>
-
-
-
-
-
-
-
-//       {/* Calendario */}
-//       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-//         <FullCalendar
-//           plugins={[dayGridPlugin, interactionPlugin]}
-//           initialView="dayGridMonth"
-//           locale={esLocale}
-//           dateClick={(info) => {
-//             setFechaSeleccionada(info.dateStr);
-//             cargarHoras(info.dateStr);
-//             setMostrarModal(true);
-//             setMensaje("");
-//           }}
-//         />
-//       </div>
-
-//       {/* Modal de horas */}
-//       {mostrarModal && (
-//         <div className="modal-overlay container">
-//           <div className="modal-content">
-//             <h2>Horas disponibles</h2>
-//             <p>{fechaSeleccionada}</p>
-
-//             <div className="horas-grid">
-//               {HORAS.map((hora) => {
-//                 const ocupada = horasOcupadas.includes(hora);
-//                 return (
-//                   <button
-//                     key={hora}
-//                     disabled={ocupada}
-//                     onClick={() => reservarHora(hora)}
-//                     className={ocupada ? "hora-ocupada" : "hora-libre"}
-//                   >
-//                     {hora}
-//                   </button>
-//                 );
-//               })}
-//             </div>
-
-//             {mensaje && <p className="mensaje">{mensaje}</p>}
-
-//             <button
-//               className="cerrar-btn"
-//               onClick={() => {
-//                 setMostrarModal(false);
-//                 setMensaje("");
-//               }}
-//             >
-//               Cerrar
-//             </button>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
-
-
 
 import { useEffect, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
@@ -397,7 +14,7 @@ const HORAS = ["09:00", "10:00", "11:00", "12:00", "16:00", "17:00", "18:00"];
 export default function Dashboard() {
   const navigate = useNavigate();
 
-  // 🔹 Estados
+  // Estados
   const [user, setUser] = useState(undefined);
   const [profile, setProfile] = useState(null);
   const [fechaSeleccionada, setFechaSeleccionada] = useState(null);
@@ -406,7 +23,7 @@ export default function Dashboard() {
   const [mensaje, setMensaje] = useState("");
   const [citaUsuario, setCitaUsuario] = useState(null);
 
-  // 🔹 Obtener usuario
+  // Obtener usuario
   useEffect(() => {
     const fetchUser = async () => {
       const { data: { user }, error } = await supabase.auth.getUser();
@@ -428,7 +45,7 @@ export default function Dashboard() {
     fetchUser();
   }, [navigate]);
 
-  // 🔹 Cargar perfil
+  // Cargar perfil
   useEffect(() => {
     if (!user) return;
 
@@ -445,7 +62,7 @@ export default function Dashboard() {
     cargarPerfil();
   }, [user]);
 
-  // 🔹 Cargar cita del usuario
+  //  Cargar cita del usuario
   const cargarCitaUsuario = async () => {
     if (!user) return;
 
@@ -471,14 +88,14 @@ export default function Dashboard() {
     }
   }, [user]);
 
-  // 🔹 Logout
+  // Logout
   const cerrarSesion = async () => {
     await supabase.auth.signOut();
     setUser(null);
     navigate("/");
   };
 
-  // 🔹 Cargar horas ocupadas
+  // Cargar horas ocupadas
   const cargarHoras = async (fecha) => {
     const { data } = await supabase
       .from("citas")
@@ -490,7 +107,7 @@ export default function Dashboard() {
     );
   };
 
-  // 🔹 Reservar hora
+  //  Reservar hora
   const reservarHora = async (hora) => {
     if (horasOcupadas.includes(hora)) {
       setMensaje("⛔ Esa hora ya está ocupada");
@@ -504,36 +121,25 @@ export default function Dashboard() {
       estado: "pendiente",
     });
 
-    // if (error) {
-    //   setMensaje("❌ Error al reservar");
-    // } else {
-    //   setMensaje("✅ Cita reservada");
-    //   cargarHoras(fechaSeleccionada);
-
-    //   // 🔥 actualizar al instante
-    //   setCitaUsuario({ fecha: fechaSeleccionada, hora });
-    // }
 
 if (error) {
     console.error(error);
 
-    // 🔥 AQUÍ ESTÁ LA CLAVE
+    // Si sale error.code === "23505" muestra mensaje
     if (error.code === "23505") {
       setMensaje("⚠️ Ya tienes una cita registrada para el dia: " +citaUsuario.fecha+ " a las:" + citaUsuario.hora );
     } else {
       setMensaje("❌ Error al reservar");
     }
 
-    return; // 👈 MUY IMPORTANTE
+    return; 
   }
     // ✅ SOLO si todo ha ido bien
   setMensaje("✅ Cita reservada correctamente");
   cargarHoras(fechaSeleccionada);
   setCitaUsuario({ fecha: fechaSeleccionada, hora });
-
-
-
   };
+
 
   const nombre = profile?.nombre || "Usuario";
 
@@ -545,7 +151,7 @@ if (error) {
     <div className="bg-light" style={{ padding: "20px" }}>
       <h1 className="text-center">Reservar Cita</h1>
 
-      {/* 🔹 Header con cita */}
+      {/* Header con cita */}
       <div className="d-flex justify-content-end align-items-center mb-3">
         <p className="mb-0">
           Hola {nombre} -{" "}
@@ -558,7 +164,7 @@ if (error) {
         </button>
       </div>
 
-      {/* 🔹 Calendario */}
+      {/* Calendario */}
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         <FullCalendar
           plugins={[dayGridPlugin, interactionPlugin]}
@@ -573,7 +179,7 @@ if (error) {
         />
       </div>
 
-      {/* 🔹 Modal */}
+      {/* Modal */}
       {mostrarModal && (
         <div className="modal-overlay container">
           <div className="modal-content">
