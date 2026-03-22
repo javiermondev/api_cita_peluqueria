@@ -89,7 +89,7 @@ export default function AdminPanel() {
         {activeTab === "usuarios" && (
           <div>
             <h2 className="text-light ms-5">Usuarios Registrados</h2>
-            <table cellPadding="5" border="10" className="border border-success border-4" >
+           <table className="table table-bordered table-striped border border-success rounded text-center">
               <thead>
                 <tr className="bg-black text-light text-center">
                   <th>Nombre</th>
@@ -114,8 +114,36 @@ export default function AdminPanel() {
 
         {activeTab === "verCitas" && (
           <div>
-            <h2>Citas</h2>
-            <table border="1" cellPadding="5">
+            {/* <h2>Citas</h2> */}
+            <h2 className="text-light ms-5">Citas</h2>
+
+<table className="table table-bordered table-striped border border-success rounded text-center">
+  <thead>
+    <tr className="bg-black text-light text-center">
+      <th className="ms-3">Fecha</th>
+      <th>Hora</th>
+      <th>Usuario</th>
+      <th>Email</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    {citas.map((cita, index) => (
+      <tr
+        key={cita.id}
+        className={`border border-black ${index % 2 === 0 ? "fila-clara" : "fila-oscura"}`}
+      >
+        <td>{cita.fecha}</td>
+        <td>{cita.hora}</td>
+        <td>{cita.usuario?.nombre}</td>
+        <td>{cita.usuario?.email}</td>
+        <td>{cita.estado}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+            {/* <table border="1" cellPadding="5">
               <thead>
                 <tr>
                   <th>Fecha</th>
@@ -136,15 +164,53 @@ export default function AdminPanel() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table> */}
           </div>
         )}
 
         {activeTab === "modificarCitas" && (
           <div>
-            <h2>Modificar Citas</h2>
+            {/* <h2>Modificar Citas</h2> */}
+            <h2 className="text-light ms-5">Modificar Citas</h2>
             {mensaje && <p style={{ color: "red" }}>{mensaje}</p>}
-            <table border="1" cellPadding="5">
+
+
+<table className="table table-bordered table-striped border border-success rounded text-center">
+  <thead>
+    <tr className="bg-black text-light text-center">
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Usuario</th>
+      <th>Cancelar</th>
+    </tr>
+  </thead>
+  <tbody>
+    {citas.map((cita, index) => (
+      <tr
+        key={cita.id}
+        className={`border border-black ${index % 2 === 0 ? "fila-clara" : "fila-oscura"}`}
+      >
+        <td>{cita.fecha}</td>
+        <td>{cita.hora}</td>
+        <td>{cita.usuario?.nombre} {cita.usuario?.apellidos}</td>
+        <td>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              const motivo = prompt("Motivo de la cancelación:");
+              if (motivo) modificarCita(cita.id, motivo);
+            }}
+          >
+            Cancelar
+          </button>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+
+            {/* <table border="1" cellPadding="5">
               <thead>
                 <tr>
                   <th>Fecha</th>
@@ -172,7 +238,7 @@ export default function AdminPanel() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table> */}
             {/* Aquí se podrían agregar controles para marcar horas/días ocupados */}
           </div>
         )}
