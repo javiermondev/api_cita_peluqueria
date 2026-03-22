@@ -142,29 +142,6 @@ export default function AdminPanel() {
     ))}
   </tbody>
 </table>
-
-            {/* <table border="1" cellPadding="5">
-              <thead>
-                <tr>
-                  <th>Fecha</th>
-                  <th>Hora</th>
-                  <th>Usuario</th>
-                  <th>Email</th>
-                  <th>Estado</th>
-                </tr>
-              </thead>
-              <tbody>
-                {citas.map((cita, index) => (
-                  <tr key={cita.id} className={index % 2 === 0 ? "fila-clara" : "fila-oscura"}>
-                    <td>{cita.fecha}</td>
-                    <td>{cita.hora}</td>
-                    <td>{cita.usuario?.nombre}</td>
-                    <td>{cita.usuario?.email}</td>
-                    <td>{cita.estado}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table> */}
           </div>
         )}
 
@@ -210,35 +187,7 @@ export default function AdminPanel() {
 </table>
 
 
-            {/* <table border="1" cellPadding="5">
-              <thead>
-                <tr>
-                  <th>Fecha</th>
-                  <th>Hora</th>
-                  <th>Usuario</th>
-                  <th>Cancelar</th>
-                </tr>
-              </thead>
-              <tbody>
-                {citas.map((cita) => (
-                  <tr key={cita.id}>
-                    <td>{cita.fecha}</td>
-                    <td>{cita.hora}</td>
-                    <td>{cita.usuario?.nombre} {cita.usuario?.apellidos}</td>
-                    <td>
-                      <button
-                        onClick={() => {
-                          const motivo = prompt("Motivo de la cancelación:");
-                          if (motivo) modificarCita(cita.id, motivo);
-                        }}
-                      >
-                        Cancelar
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table> */}
+         
             {/* Aquí se podrían agregar controles para marcar horas/días ocupados */}
           </div>
         )}
