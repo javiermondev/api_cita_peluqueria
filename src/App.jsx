@@ -1,10 +1,12 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./styles/fondoGlobal.css"; // ✅ Tu CSS global
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import Login from "./pages/login";
  import Register from "./pages/register";
  import Dashboard from "./pages/dashboard";
 import Recordbook from "./pages/recordbook";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export default function App() {
   return (

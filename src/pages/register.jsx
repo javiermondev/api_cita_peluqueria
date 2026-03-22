@@ -1,5 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/fondoGlobal.css";
 import { supabase } from "../lib/supabase.js";
 
