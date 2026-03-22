@@ -2,24 +2,25 @@
 
 El proyecto se ha llevado a cabo con React, Vite y Supabase (para la pequeña base de datos)
 
-#Proyecto (Aplicación para citas de una peluquería)
+# Proyecto (Aplicación para citas de una peluquería)
 
-##1.- Introducción
+## 1.- Introducción
 
 El proyecto consiste en la creación de una aplicación para coger citas para una peluqueria. Con la creación de 2 roles, cliente y administrador.
 
-##2.- Objetivos del proyecto
+## 2.- Objetivos del proyecto
 
 Creacón de una aplicación para coger citas y administrar la gestión de las mismas por parte del administrador. Para ahorrar tiempo y facilitar la solicitud de las mismas a los clientes.
 
-##3.- Justificación del proyecto
+## 3.- Justificación del proyecto
 
 Este proyecto se desarrolló con el objetivo de aprender y practicar tecnologías modernas como React, Supabase, y despliegue en Vercel. Me permitió experimentar con bases de datos en tiempo real, autenticación de usuarios y gestión de interfaces interactivas.
 Además de aprender teoría, se buscó crear una aplicación funcional que simulara un sistema de reservas de citas, integrando interacción con el usuario, manejo de datos y visualización de información.
 Aunque el proyecto surgió como un ejercicio de aprendizaje, también tiene potencial como prototipo de una aplicación real, demostrando cómo se puede gestionar un sistema de reservas de manera eficiente y visualmente atractiva.
 
-##4.- Recursos utilizados
-	4.1.- Entornos de desarrollo
+## 4.- Recursos utilizados
+	
+    4.1.- Entornos de desarrollo
 
     Para la realización del proyecto he utilizado Visual Studio Code para el desarrollo del mismo
 
@@ -35,7 +36,7 @@ Aunque el proyecto surgió como un ejercicio de aprendizaje, también tiene pote
     - Git y Github para el control de versiones y el alojamiento del repositorio
     - Vercel: Para desplegar la aplicación web de manera gratuita.
 
-##5.- Tecnologías de desarrollo
+## 5.- Tecnologías de desarrollo
 
 Lenguajes de programación
 - JavaScript – para la lógica del frontend y manejo de eventos.
@@ -55,7 +56,7 @@ Otras herramientas
 - Visual Studio Code – entorno de desarrollo.
 - NPM / Node.js – gestión de dependencias y scripts de desarrollo.
 
-##6.- Diseño del proyecto
+## 6.- Diseño del proyecto
 
 Diseño visual (UI / UX)
 - Uso de FullCalendar para mostrar las fechas y facilitar la selección de citas.
@@ -79,7 +80,7 @@ Flujo de datos
 - Datos de usuarios y citas cargados al montar componentes o al cambiar de pestaña.
 - Control de errores y mensajes en UI (setMensaje) para informar al usuario.
 
-##7.- Lógica/codificación del proyecto
+## 7.- Lógica/codificación del proyecto
 
 1️⃣ Estructura del código
 Componentes principales:
@@ -111,7 +112,7 @@ Administradores:
 - Visualizan y modifican citas (cancelar o marcar como ocupadas).
 - Los cambios actualizan la base de datos y la interfaz de forma instantánea.
 
-##8.- Despliegue web del proyecto
+## 8.- Despliegue web del proyecto
 
 El proyecto lo he desplegado con Vercel, utilizando como Base de datos Supabase. Supabase afrece una serie de ventajas, entre ellas la rápidez para poder crear todo que ahora mismo era lo que quería. Supabase tiene una serie de ventajas, entre ellas: 
 - Utiliza base real de PostgreSQL
@@ -120,7 +121,7 @@ El proyecto lo he desplegado con Vercel, utilizando como Base de datos Supabase.
 - Tiene un panel visual fácil de asimilar
 - Integra bien con React
 
-##9.- Manual de usuario
+## 9.- Manual de usuario
 
 Pantalla inicial:
 - Registro 
@@ -134,7 +135,7 @@ Aparece un calendario, para que el usuario pueda coger su cita. En la parte supe
 
 Para poder seleccionar la fecha de la cita, el cliente pulsará sobre el dia seleccionado y seleccionará una de las horas disponibles y esa hora ya quedará reservada. Pendiente de aprobar o cancelar por el administrador (aunque falta implementar esta parte). Cada usuario ahora mismo tiene limitado a sólo poder seleccionar una cita en la base de datos para no masificar ni permitir que cualquiera registre todas las horas que quiera y poner un poco de limites aunque será el administrador como ya he dicho, el que acepte o cancele las solicitudes de los clientes.
 
-##10.- Conclusiones
+## 10.- Conclusiones
 
 Empece el proyecto hace tiempo pero lo tuve que parar por motivos laborales y unos meses depues lo he retomado para terminarlo aunque todavía quedan cosas por pulir pero puede estar desarrollado a un 90% salvo pequeñas cosas que todavía son mejorables y que se pueden implementar más adelante.
 
