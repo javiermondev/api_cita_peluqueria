@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import "../styles/fondoGlobal.css";
+import "../styles/fondoGlobal.css";
 
 export default function AdminPanel() {
   const [activeTab, setActiveTab] = useState("usuarios");
@@ -77,16 +77,16 @@ export default function AdminPanel() {
   }, [activeTab]);
 
   return (
-    <div style={{ padding: "20px", }}>
+    <div className="p-3">
       {/* Barra de pestañas / botones */}
-      <div style={{ marginBottom: "20px", backgroundColor:"black", padding:10}}>
+      <div className="mb-3 p-2 bg-dark">
         <button onClick={() => setActiveTab("usuarios")} className="btn btn-success me-2" >Usuarios</button>
         <button onClick={() => setActiveTab("verCitas")} className="btn btn-success me-2">Ver Citas</button>
         <button onClick={() => setActiveTab("modificarCitas")} className="btn btn-success me-2">Modificar Citas</button>
-      </div>
+     
 
       {/* Div principal dinámico */}
-      <div style={{ border: "1px solid #ccc", padding: "20px", minHeight: "300px", backgroundColor:"black" }}>
+     <div className="p-4 bg-dark border border-secondary">
         {activeTab === "usuarios" && (
           <div>
             <h2 className="text-light ms-5">Usuarios Registrados</h2>
@@ -148,9 +148,8 @@ export default function AdminPanel() {
 
         {activeTab === "modificarCitas" && (
           <div>
-            {/* <h2>Modificar Citas</h2> */}
             <h2 className="text-light ms-5">Modificar Citas</h2>
-            {mensaje && <p style={{ color: "red" }}>{mensaje}</p>}
+            {mensaje && <p className="text-danger">{mensaje}</p>}
 
 
 <table className="table table-bordered table-striped border border-success rounded text-center">
@@ -194,5 +193,6 @@ export default function AdminPanel() {
         )}
       </div>
     </div>
+     </div>
   );
 }
