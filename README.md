@@ -89,10 +89,12 @@ Componentes principales:
 - Login y Register: autenticación de usuarios.
 - Estilos: centralizados en fondoGlobal.css y algunas clases específicas para tablas, botones y modales.
 - Librerías utilizadas: React, FullCalendar, Supabase, React Router.
+
 2️⃣ Gestión de estados y hooks
 - useState: para almacenar información dinámica como usuario, perfil, citas, horas ocupadas y mensajes.
 - useEffect: para cargar datos al montar el componente o al cambiar estados relevantes (usuario, pestaña activa).
 - Flujos condicionales: redirección de usuarios admin a /recordbook, control de citas únicas por usuario, actualización de mensajes en UI.
+
 3️⃣ Integración con Supabase
 - Autenticación: creación, login y logout de usuarios.
 CRUD de citas:
@@ -101,6 +103,7 @@ CRUD de citas:
 - Update: modificar estado de cita (cancelar).
 - Delete: opcional, no implementado pero posible vía Supabase.
 - Control de errores: mensajes al usuario si intenta duplicar cita, seleccionar hora ocupada o falla alguna operación en la base de datos.
+
 4️⃣ Lógica del proyecto
 Clientes:
 - Seleccionan fecha en el calendario.
@@ -143,3 +146,10 @@ Algunas cosas que faltan por terminar o mejorar.
 - El administrador debe poder aceptar o cancelar las citas desde el panel de administración. El css está terminado pero faltaría implementar esto y que al usuario le saliera algún mensaje, ya que actualmente en la base de datos se gurdan las citas como pendiente. Pudiendo tambien guardarse como aceptadas o canceladas. En otros proyectos si tengo esto implementado pero aquí por falta de tiempo no pude hacerlo y estaría pendiente de hacerse.
 
 - El diseño quizás tambien podría ser mejorable
+
+
+
+## Autor
+
+**Javier Montaño**  
+📧 Email: javimtdaw@gmail.com 
