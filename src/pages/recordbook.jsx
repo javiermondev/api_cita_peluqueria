@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "../styles/fondoGlobal.css";
+// import "../styles/fondoGlobal.css";
 
 export default function AdminPanel() {
   const [activeTab, setActiveTab] = useState("usuarios");
