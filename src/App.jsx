@@ -4,6 +4,7 @@ import Login from "./pages/login";
  import Register from "./pages/register";
  import Dashboard from "./pages/dashboard";
 import Recordbook from "./pages/recordbook";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
   return (
