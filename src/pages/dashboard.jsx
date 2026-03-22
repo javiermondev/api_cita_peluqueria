@@ -148,7 +148,7 @@ if (error) {
   }
 
   return (
-    <div className="bg-light" style={{ padding: "20px" }}>
+    <div className="bg-light p-3">
       <h1 className="text-center">Reservar Cita</h1>
 
       {/* Header con cita */}
