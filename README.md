@@ -126,6 +126,14 @@ El proyecto lo he desplegado con Vercel, utilizando como Base de datos Supabase.
 
 ## 9.- Manual de usuario
 
+Credencial de administrador:
+Mail: admin@gmail.com
+Contraseña: 123456
+
+Credencial de cliente:
+Mail: nora@gmail.com
+Contraseña: 123456
+
 Pantalla inicial:
 - Registro 
 - Login de sesión
