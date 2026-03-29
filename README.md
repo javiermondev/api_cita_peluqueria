@@ -146,14 +146,26 @@ Aparece un calendario, para que el usuario pueda coger su cita. En la parte supe
 
 Para poder seleccionar la fecha de la cita, el cliente pulsará sobre el dia seleccionado y seleccionará una de las horas disponibles y esa hora ya quedará reservada. Pendiente de aprobar o cancelar por el administrador (aunque falta implementar esta parte). Cada usuario ahora mismo tiene limitado a sólo poder seleccionar una cita en la base de datos para no masificar ni permitir que cualquiera registre todas las horas que quiera y poner un poco de limites aunque será el administrador como ya he dicho, el que acepte o cancele las solicitudes de los clientes.
 
+- Backend (admin)
+
+Disponemos de 3 pestañas: Usuarios, Ver citas y Modificar citas. 
+En la pantalla de usuarios el administrador podrá ver las personas registradas en la plataforma y poder disponer de algunos datos del cliente como el nombre, apellidos, email y teléfono.
+En la pantalla ver citas se puede ver la fecha de las citas solicitadas, la hora, el usuario que la ha registrado, el email y el estado de la misma.
+Y en modificar citas el administrador podrá aceptar o cancelar la cita. En esta pestaña aparece la fecha y hora de la cita, el usuario que la registro, así como la opción de cancelarla o aceptarla.
+
+Esto último falta por implementarlo y sería lo próximo a realizar para mejorar la aplicación. Al aceptar podría enviar un email al usuario para confirmar la cita y en ver citas, cambiariamos el estado de pendiente a aceptado. O en caso de cancelar mandaría un email al usuario para cancelar la cita explicando el motivo y apareceria la cita en ver citas como cancelada.
+
+
 ## 10.- Conclusiones
 
 Empece el proyecto hace tiempo pero lo tuve que parar por motivos laborales y unos meses depues lo he retomado para terminarlo aunque todavía quedan cosas por pulir pero puede estar desarrollado a un 90% salvo pequeñas cosas que todavía son mejorables y que se pueden implementar más adelante.
 
 Algunas cosas que faltan por terminar o mejorar.
-- El administrador debe poder aceptar o cancelar las citas desde el panel de administración. El css está terminado pero faltaría implementar esto y que al usuario le saliera algún mensaje, ya que actualmente en la base de datos se gurdan las citas como pendiente. Pudiendo tambien guardarse como aceptadas o canceladas. En otros proyectos si tengo esto implementado pero aquí por falta de tiempo no pude hacerlo y estaría pendiente de hacerse.
+- El administrador debe poder aceptar o cancelar las citas desde el panel de administración. El css está terminado pero faltaría implementar esto y que al usuario le saliera algún mensaje, ya que actualmente en la base de datos se guardan las citas como pendiente. Pudiendo tambien guardarse como aceptadas o canceladas. En otros proyectos si tengo esto implementado pero aquí por falta de tiempo no pude hacerlo y estaría pendiente de hacerse.
 
 - El diseño quizás tambien podría ser mejorable
+
+
 
 
 
